@@ -8,13 +8,21 @@ export const search = async (state: any, fd: FormData) => {
     query: string
   }
 
+  console.log(type, query)
+
   if (type === "item") {
-    return await prisma.item.findMany({
-      where: { name: { equals: query, mode: "insensitive" } },
-    })
+    return {
+      type,
+      items: await prisma.item.findMany({
+        where: { name: { equals: query, mode: "insensitive" } },
+      }),
+    }
   } else {
-    return await prisma.box.findMany({
-      where: { tags: { has: query.toLowerCase() } },
-    })
+    return {
+      type,
+      items: await prisma.box.findMany({
+        where: { tags: { has: query.toLowerCase() } },
+      }),
+    }
   }
 }

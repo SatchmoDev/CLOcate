@@ -29,7 +29,7 @@ export default function New() {
           return (
             <div key={i} className="flex gap-2">
               <input
-                placeholder="Name"
+                placeholder="Name (Balloon)"
                 value={items[i].name}
                 onChange={(e) => updateItems(i, "name", e.target.value)}
                 className="input w-full"
@@ -37,7 +37,7 @@ export default function New() {
 
               <input
                 pattern="[0-9]+"
-                placeholder="Amount"
+                placeholder="Amount (7)"
                 value={items[i].amount}
                 onChange={(e) => updateItems(i, "amount", e.target.value)}
                 className="input w-full"
@@ -46,7 +46,11 @@ export default function New() {
           )
         })}
 
-        <input name="tags" placeholder="Tags" className="input" />
+        <input
+          name="tags"
+          placeholder="Tags (Halloween, Decorations, Holiday)"
+          className="input"
+        />
         <input type="file" accept="image/*" name="image" className="input" />
 
         <button className="button">Submit</button>
